@@ -13,11 +13,15 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
+  <body
+  class="bg-image"
+  style=" background-image: url('https://s3-eu-west-1.amazonaws.com/sales-i-wordpress/wp-content/uploads/2015/12/17112848/black-background.jpg'); height: 100vh;"
+  >
+ 
     <div class="container">
       <!-- we can render out first the form and then the table that is going to contain all of our different results
   for the short urls we have already generated -->
-      <h1>Shorten Your URLs</h1>
+      <h1 style="color: white">Shorten Your URLs</h1>
       <!-- my-4 gives a little margin to the left of the form -->
       <form action="/shortUrls" method="POST" class="my-4 form-inline">
         <!-- handling the full url and the submit button -->
@@ -37,9 +41,9 @@
       <table class="table table-striped table-responsive">
         <thead>
           <tr>
-            <th>Original URL</th>
-            <th>Shrinked URL</th>
-            <th>Clicks</th>
+            <th style="color: white">Original URL</th>
+            <th style="color: white">Shrinked URL</th>
+            <th style="color: white">Clicks</th>
           </tr>
         </thead>
         <tbody>
@@ -49,8 +53,10 @@
             <td>
               <a href="<%= shortUrl.full %> "><%= shortUrl.full %></a>
             </td>
-            <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
-            <td><%= shortUrl.clicks %></td>
+            <td ">
+              <a href="<%= shortUrl.short %>"><%= shortUrl.short %></a>
+            </td>
+            <td style="color: white"><%= shortUrl.clicks %></td>
           </tr>
 
           <% }) %>
