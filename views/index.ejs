@@ -1,0 +1,61 @@
+<!-- it is going to contain both the form for creating a new short url and the urls we have currently -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Darth Url-Shortner</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- we can render out first the form and then the table that is going to contain all of our different results
+  for the short urls we have already generated -->
+      <h1>Shorten Your URLs</h1>
+      <!-- my-4 gives a little margin to the left of the form -->
+      <form action="/shortUrls" method="POST" class="my-4 form-inline">
+        <!-- handling the full url and the submit button -->
+        <!-- we use sr-only to let only screenReaders have the visibility of the URL label -->
+        <label class="visually-hidden" for="fullUrl"> URL</label>
+        <input
+          required
+          placeholder="URL"
+          type="url"
+          name="fullUrl"
+          id="fullUrl"
+          class="form-control col-1 mr-2"
+        />
+        <button class="btn btn-success" type="submit">Shrink</button>
+      </form>
+      <!-- create the shell for our table that is going to contain the Url -->
+      <table class="table table-striped table-responsive">
+        <thead>
+          <tr>
+            <th>Original URL</th>
+            <th>Shrinked URL</th>
+            <th>Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% shortUrls.forEach(shortUrl => { %>
+
+          <tr>
+            <td>
+              <a href="<%= shortUrl.full %> "><%= shortUrl.full %></a>
+            </td>
+            <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+            <td><%= shortUrl.clicks %></td>
+          </tr>
+
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
