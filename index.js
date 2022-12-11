@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const ShortUrl = require("./models/shortUrl.js");
 // now we have our short url being imported and in our post we can actually create a new one
 const app = express();
+const port = process.env.PORT || 5000
 //using ejs view engine
 app.set("view engine", "ejs");
 //connect to the database using fuction
@@ -54,4 +55,6 @@ app.get("/:shortUrl", async (req, res) => {
 });
 
 //server creation and listening to enviornment variables or port 5000
-app.listen(process.env.PORT || 5000);
+app.listen(port,()=>{
+  console.log('listening to Port '+port);
+});
